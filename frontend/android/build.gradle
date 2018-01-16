@@ -114,6 +114,8 @@ dependencies {
   implementation deps.android.support.design
   implementation deps.android.support.constraintLayout
 
+  implementation deps.reagent.jdk
+  implementation deps.reagent.rxjava2
   implementation deps.rx.java
   implementation deps.rx.android
   implementation deps.rx.binding.framework

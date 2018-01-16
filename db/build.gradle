@@ -36,7 +36,9 @@ dependencies {
   kapt deps.auto.value.compiler
   compileOnly deps.auto.value.annotations
 
-  api deps.rx.java
+  api deps.reagent.jdk
+  implementation deps.reagent.rxjava2
+  implementation deps.rx.java
 
   implementation deps.timber
 

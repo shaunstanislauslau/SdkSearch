@@ -4,6 +4,7 @@ import com.squareup.sqlbrite3.BriteDatabase
 import com.squareup.sqlbrite3.inTransaction
 import com.squareup.sqldelight.SqlDelightCompiledStatement
 import com.squareup.sqldelight.SqlDelightQuery
+import reagent.rxjava2.toReagent
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,9 +30,11 @@ internal class SqlItemStore @Inject constructor(
 
   override fun queryItems(term: String) = db.createQuery(Item.FACTORY.query_term(term))
       .mapToList(Item.FACTORY.query_termMapper()::map)
+      .toReagent()
 
   override fun count() = db.createQuery(Item.FACTORY.count())
       .mapToOne(Item.FACTORY.countMapper()::map)
+      .toReagent()
 
   private fun <T : SqlDelightCompiledStatement> T.insert(binder: T.() -> Unit) {
     synchronized(this) {

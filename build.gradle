@@ -65,6 +65,12 @@ buildscript {
           'converterKotlinxSerialization': 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.0.1',
           'converterMoshi': "com.squareup.retrofit2:converter-moshi:${versions.retrofit}",
       ],
+      'reagent': [
+          'common': 'com.jakewharton.reagent:reagent-common:0.0.1-SNAPSHOT',
+          'jdk': 'com.jakewharton.reagent:reagent-jdk:0.0.1-SNAPSHOT',
+          'js': 'com.jakewharton.reagent:reagent-js:0.0.1-SNAPSHOT',
+          'rxjava2': 'com.jakewharton.reagent:reagent-rxjava2:0.0.1-SNAPSHOT',
+      ],
       'rx': [
           'java': 'io.reactivex.rxjava2:rxjava:2.1.8',
           'android': 'io.reactivex.rxjava2:rxandroid:2.0.1',

@@ -1,6 +1,6 @@
 package com.jakewharton.sdksearch.db
 
-import io.reactivex.Observable
+import reagent.Observable
 
 interface ItemStore {
   fun count(): Observable<Long>

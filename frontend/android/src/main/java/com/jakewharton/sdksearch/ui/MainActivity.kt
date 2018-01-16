@@ -40,6 +40,7 @@ import io.reactivex.schedulers.Schedulers.computation
 import kotlinx.coroutines.experimental.CoroutineStart.UNDISPATCHED
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
+import reagent.rxjava2.toRx
 import timber.log.Timber
 import java.util.concurrent.TimeUnit.MILLISECONDS
 
@@ -95,6 +96,7 @@ class MainActivity : Activity() {
         }
 
     store.count()
+        .toRx()
         .observeOn(mainThread())
         .crashingSubscribe {
           queryInput.hint = resources.getQuantityString(R.plurals.search_classes, it.toInt(), it)
@@ -104,7 +106,7 @@ class MainActivity : Activity() {
         .map(CharSequence::toString)
         .switchMap { query ->
           val results = if (query.isBlank()) just(emptyList())
-          else store.queryItems(query).delaySubscription(200, MILLISECONDS, mainThread())
+          else store.queryItems(query).toRx().delaySubscription(200, MILLISECONDS, mainThread())
 
           results.map { query to it }
         }
